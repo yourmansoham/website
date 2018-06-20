@@ -8,7 +8,7 @@ from sorl.thumbnail import get_thumbnail
 
 from .models import (Project, Theme, FeaturedTheme, FeaturedProject,
                      ProjectList, NetworkGroup, NetworkGroupList, WorkingGroup,
-                     SignupForm, SideBarExtension)
+                     SignupForm, SideBarExtension, ReportSection)
 
 
 class FeaturedThemePlugin(CMSPluginBase):
@@ -153,3 +153,12 @@ plugin_pool.register_plugin(SignupFormPlugin)
 
 
 extension_pool.register(SideBarExtension)
+
+
+class ReportSectionPlugin(CMSPluginBase):
+    model = ReportSection
+    name = _("Report Section")
+    render_template = "organisation/report_section.html"
+    cache = False
+
+plugin_pool.register_plugin(ReportSectionPlugin)

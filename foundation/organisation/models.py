@@ -410,3 +410,11 @@ class SignupForm(CMSPlugin):
 
 class SideBarExtension(PageExtension):
     enabled = models.BooleanField(default=True)
+
+
+class ReportSection(CMSPlugin):
+    TYPES = (
+        ('text', 'Text'),
+        ('callout', 'Callout'),
+    )
+    section_type = models.CharField(max_length=50, choices=TYPES, default='text')
