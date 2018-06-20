@@ -1,0 +1,146 @@
+$primary-colour: #61BC30 !default;
+$accent-colour: #2D2D2D !default;
+@import "vars";
+
+a {
+  color: $primary-colour;
+}
+
+.footnotes {
+  a:last-child {
+    color: $primary-colour;
+  }
+}
+
+.cover {
+  position: relative;
+
+  @media (min-width: $sm) {
+    //background-image: url('../../img/report/cover-mask.svg');
+    background-image: url('../../img/report/cover-mask.png'); // use PNG until find a fallback for IE
+    background-position: center;
+    background-size: cover;
+
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: -1;
+
+      @if variable-exists(cover-colour) {
+        background-color: $cover-colour;
+      } @else {
+        background-color: $primary-colour;
+      }
+      @if variable-exists(cover-image) {
+        background-image: url('#{$cover-image}');
+        background-position: center;
+
+        @if variable-exists(cover-size) {
+          background-size: #{$cover-size};
+        } @else {
+          background-size: cover;
+        }
+      }
+    }
+  }
+
+  .title,
+  .sub-title {
+    background-color: $accent-colour;
+    color: #fff;
+
+    span[class^='word'],
+    span[class*='word'] {
+      background-color: $accent-colour;
+      position: relative;
+      display: inline-block;
+
+      &:before {
+        content: '';
+        position: absolute;
+        background-color: $accent-colour;
+        top: -15px;
+        right: -20px;
+        bottom: -15px;
+        left: -20px;
+        z-index: -1;
+      }
+    }
+  }
+
+  .authors {
+    $authors-bg: $primary-colour;
+    color: #fff;
+
+    @if variable-exists(cover-colour) {
+      $authors-bg: $cover-colour;
+    }
+
+    span[class^='word'],
+    span[class*='word'] {
+      background-color: $authors-bg;
+      position: relative;
+      display: inline-block;
+
+      &:before {
+        content: '';
+        position: absolute;
+        background-color: $authors-bg;
+        top: -15px;
+        right: -20px;
+        bottom: -15px;
+        left: -20px;
+        z-index: -1;
+      }
+    }
+  }
+
+  .title,
+  .sub-title,
+  .authors {
+
+    &[aria-label] {
+      background-color: transparent;
+    }
+  }
+
+  .logos {
+    .logo {
+      background-color: #fff;
+    }
+    svg {
+      fill: $accent-colour;
+    }
+  }
+}
+
+.component {
+  &.callout {
+    background-color: rgba($primary-colour,0.2);
+
+    @media (min-width: $md) {
+      background-color: #fff;
+
+      .copy {
+        outline-color: $primary-colour;
+      }
+    }
+  }
+}
+
+.pull-quote {
+  color: $primary-colour;
+
+  &:before,
+  &:after {
+    color: $primary-colour;
+  }
+}
+
+table th {
+  background-color: $accent-colour;
+}

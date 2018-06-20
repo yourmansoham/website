@@ -1,0 +1,24 @@
+// layout
+$grid-gutter: 20px;
+
+$sm: 768px;
+$md: 1024px;
+$lg: 1200px;
+
+// type
+$typl8-font-family: 'Lato', sans-serif;
+$typl8-paragraph-spacing: true;
+
+$typl8-scale: (
+  typl8-tera: 18*5,
+  typl8-giga: 18*4,
+  typl8-mega: 18*3.3333,
+  typl8-alpha: 18*2.6667,
+  typl8-beta: 18*2,
+  typl8-gamma: 18*1.3333,
+  typl8-delta: 18*1.1667,
+  typl8-epsilon: 18,
+  typl8-zeta: 18,
+);
+
+$typl8-cite-font-size: 0.8em;

@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% load cms_tags %}
+
+{% block title %}{% page_attribute "title" %}{% endblock %}
+
+{% block head-css %}
+<link href="https://fonts.googleapis.com/css?family=Lato:400,400i,700,900" rel="stylesheet">
+<link rel="stylesheet" href="{{ STATIC_URL }}css/report/base.css">
+<link rel="stylesheet" href="{{ STATIC_URL }}css/report/prism.css">
+{% endblock %}
+
+{% block head-meta %}
+{% endblock %}
+
+{% block body-sheath %}
+<header class="cover">
+  <div class="container">
+    {% page_attribute "page_title" as author %}
+    {% page_attribute "menu_title" as date %}
+    {% page_attribute "meta_description" as sub_title %}
+    <div class="date">
+      {{ date }}
+    </div>
+    <div class="copy">
+      <h1 class="title">{% page_attribute "title" %}</h1>
+      {% if sub_title != "None" and sub_title != "" %}
+      <p class="sub-title">{{ sub_title }}</p>
+      {% endif %}
+      <div class="authors">
+        {% placeholder "author full" or %}<p>{{ author }}</p>{% endplaceholder %}
+      </div>
+    </div>
+    <div class="logos">
+      <a class="oki logo" href="/">
+        {% include 'includes/logo.svg' %}
+      </a>
+
+      {% placeholder "support from" %}
+
+      {% placeholder "license" or %}
+      <a class="licence" href="https://creativecommons.org/licenses/by/4.0/">
+        CC-BY 4.0
+      </a>
+      {% endplaceholder %}
+    </div>
+  </div>
+</header>
+
+{% placeholder "content" %}
+
+TODO: plugin to format content in the various ways, as required to replicate the three reports here https://github.com/okfn/research/tree/master/research 
+
+{% endblock %}
+
+{% block javascript-libraries %}
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lettering.js/0.7.0/jquery.lettering.min.js"></script>
+<script src="{{ STATIC_URL }}/vendor/prism/prism.js"></script>
+<script src="{{ STATIC_URL }}/js/report.js"></script>
+{% endblock %}
