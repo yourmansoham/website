@@ -1,0 +1,42 @@
+{% extends "cms_default.html" %}
+{% load cms_tags %}
+
+{% block body-class %}childlist-template{% endblock %}
+{% block pagebanner %}
+<div class='banner'>
+  <div class='container'>
+    {% block pagebanner-inner %}
+      {% placeholder "headline" or %}<h2>{% page_attribute "page_title" %}</h2>{% endplaceholder %}
+      {% placeholder "blurb" %}
+    {% endblock %}
+  </div>
+</div>
+{% endblock %}
+
+{% block body %}
+<section id="more" class="primary-section">
+  <div class="intro">
+    {% placeholder "main" %}
+  </div>
+  <div>
+  {% for page in request.current_page.get_children %}
+    {% page_attribute "title" page as child_title %}
+    {% page_attribute "page_title" page as child_author %}
+    {% page_attribute "menu_title" page as child_date %}
+    {% page_attribute "meta_description" page as child_sub_title %}
+    {% page_attribute "slug" page as child_slug %}
+    {% if child_date != "None" and child_date != "" %}
+    <a href="{{ child_slug }}" target="_blank">
+      <p>{{ child_title }}</p>
+      <p>
+        {{ child_author }}
+      </p>
+      <p>
+        {{ child_date }}
+      </p>
+    </a>
+    {% endif %}
+  {% endfor %}
+  </div>
+</section>
+{% endblock %}
