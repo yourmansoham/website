@@ -256,73 +256,52 @@
       margin-bottom: 0;
     }
 
-    .feature {
+    .article-list-item {
       @include make-md-column(4);
       margin-bottom: 30px;
 
       a {
         text-decoration: none;
+        color: inherit;
       }
 
       .image {
         display: inline-block;
-        width: 175px;
-        height: 175px;
+        width: 238px;
+        height: 238px;
         border-radius: 50%;
-        border: solid 4px $green;
-        background-position: center center;
-        background-size: cover;
-        position: relative;
+        padding: 4px;
+        background-color: $green;
 
-        &:after {
-          content: '';
-          display: block;
-          width: 4px;
-          height: 20px;
-          background-color: $green;
-          position: absolute;
-          bottom: -22px;
-          left: 50%;
-          margin-left: -2px;
+        img {
+          width: 100%;
+          height: 100%;
+          border-radius: 50%;
+          object-fit: cover;
         }
       }
 
-      h3 {
-        text-transform: uppercase;
+      h1 {
         font-size: 24px;
+        text-transform: uppercase;
+        color: $green;
       }
 
-      &.two {
+      &:nth-child(2){
         .image {
-          border-color: $red;
-          &:after {
-            background-color: $red;
-          }
+          background-color: $red;
         }
-        a {
+        h1 {
           color: $red;
-
-          &:hover,
-          &:focus {
-            color: darken($red, 15%);
-          }
         }
       }
 
-      &.three {
+      &:nth-child(3){
         .image {
-          border-color: $blue;
-          &:after {
-            background-color: $blue;
-          }
+          background-color: $blue;
         }
-        a {
+        h1 {
           color: $blue;
-
-          &:hover,
-          &:focus {
-            color: darken($blue, 15%);
-          }
         }
       }
     }
