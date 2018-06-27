@@ -6,24 +6,28 @@
 {% block body-class %}home-template{% endblock %}
 {% block pagebanner %}
 <section class="banner">
+  {% include 'includes/banner-pattern.html' %}
+  {% include 'includes/banner-pattern.html' %}
   <div class="container">
-    <div class="mission">
-      {% placeholder "blurb" %}
-    </div>
-      {% placeholder featured_news %}
+    {% placeholder "blurb" %}
   </div>
 </section>
 {% endblock %}
 
 {% block body %}
 <section class="features">
-  <div class="container">
-    {% placeholder "features" %}
-  </div>
+  {% placeholder "features" %}
 </section>
 
-<section class="container call-to-action">
-  {% placeholder "call to action link" %}
+<section class="news">
+  <div class="intro">
+    <div class="text">
+      {% placeholder "news intro" %}
+    </div>
+  </div>
+  <div class="owl-carousel" id="news">
+    {% placeholder featured_news %}
+  </div>
 </section>
 
 <section class="blog-latest container">
@@ -32,25 +36,33 @@
 </section>
 {% endblock %}
 
+{% block template-scripts %}
+<script type="text/javascript" src="{{ STATIC_URL }}vendor/owl.carousel/dist/owl.carousel.min.js"></script>
+{% endblock template-scripts %}
+
 {% block javascript-asynchronous %}
 <script src="{{ STATIC_URL }}vendor/jQuery.dotdotdot/src/jquery.dotdotdot.js"></script>
 <script>
   $(function () {
-    // change bg img
-    $.fn.setBg = function(){
-      var newsimage = $('.banner .item.active').attr('data-img');
-      $('.banner').css('backgroundImage','url(' + newsimage + ')');
-    }
-    $.fn.setBg();
-    $('#news').on('slide.bs.carousel', function () {
-      $( ".banner").addClass( "transition");
+    // carousel
+    $('#news').owlCarousel({
+      margin:30,
+      dots:false,
+      responsive:{
+        0:{
+          items:0
+        },
+        768:{
+          items:2,
+          nav:true
+        },
+        992:{
+          items:3,
+          nav:true
+        }
+      }
     })
-    $('#news').on('slid.bs.carousel', function () {
-      $.fn.setBg();
-      $( ".banner").removeClass( "transition");
-    })
-    // word spans
-    $(".carousel-caption h3, .carousel-caption p").lettering('words');
+
     // blog preview ellipsis
     $(".blog-latest article").dotdotdot({
       //	configuration goes here

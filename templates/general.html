@@ -69,7 +69,18 @@
         <main class='{% block main-class %}container {% endblock %}main'>
             {% block body %}{% endblock %}
         </main>
-        {% block pre_footer %}{% endblock %}
+        {% block pre_footer %}
+        <section class="cta">
+          <div class="container">
+            <div class="text">
+              {% static_placeholder "call to action text" %}
+            </div>
+            <div class="link">
+              {% static_placeholder "call to action link" %}
+            </div>
+          </div>
+        </section>
+        {% endblock %}
         <footer class="site-footer">
             <div class='container'>
                 {% include 'includes/footer.html' %}
@@ -127,8 +138,6 @@
         <script type="text/javascript" src="{{ STATIC_URL }}vendor/bootstrap/js/dropdown.js"
                 charset="utf-8"></script>
         <script type="text/javascript" src="{{ STATIC_URL }}vendor/bootstrap/js/collapse.js"
-                charset="utf-8"></script>
-        <script type="text/javascript" src="{{ STATIC_URL }}vendor/letteringjs/jquery.lettering.js"
                 charset="utf-8"></script>
         {% block template-scripts %}{% endblock template-scripts %}
         <script>

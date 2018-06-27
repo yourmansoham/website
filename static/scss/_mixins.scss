@@ -51,3 +51,76 @@
     @include button-size($padding-large-vertical, $padding-large-horizontal, $font-size-large, $line-height-large, $btn-border-radius-large);
   }
 }
+
+@mixin header-colour ($header-bg: $brand-primary, $header-col: #fff) {
+  $active-col: darken($header-bg, 10%);
+  background-color: $header-bg;
+
+  @if (lightness($header-bg) < 90) {
+    .brand {
+      .a,
+      .b {
+        fill: $header-col;
+      }
+    }
+  }
+
+  nav {
+    & > .primary > li > a:not(:hover) {
+      color: $header-col;
+    }
+
+    .primary {
+      & > li {
+        &:not(.search) {
+          border-color: rgba($header-bg,0);
+        }
+
+        &.active > a {
+          background-color: $header-col;
+          color: $active-col;
+        }
+      }
+
+      label[for="search"] {
+        background-color: $header-col;
+        color: $active-col;
+      }
+    }
+
+    .secondary > li > a {
+      color: $header-col;
+    }
+  }
+
+  .show-menu {
+    color: $header-col;
+  }
+
+  .banner {
+    background-color: rgba($header-bg,0);
+    color: $header-col;
+  }
+
+  @if (lightness($header-bg) < 50) {
+    .search-bar {
+      background-color: $gray-base;
+      color: #fff;
+
+      .container {
+        .input {
+          input[type="text"] {
+            border-bottom-color: #fff;
+          }
+        }
+        .buttons {
+          button {
+            &.cancel {
+              box-shadow: inset 0px 0px 0px 2px #fff;
+            }
+          }
+        }
+      }
+    }
+  }
+}

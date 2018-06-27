@@ -1,9 +1,7 @@
 .page-template,
-[class$="-template"]:not(.home-template) {
+[class$="-template"] {
 
   .banner {
-    background-color: $brand-primary;
-    color: #fff;
     padding-top: 30px;
     padding-bottom: 30px;
 
@@ -63,6 +61,49 @@
           @supports (object-fit: cover) {
             height: 100%;
             object-fit: cover;
+          }
+        }
+      }
+    }
+
+    .container {
+      position: relative;
+      z-index: 2;
+    }
+
+    .banner-pattern {
+      display: none;
+      @supports (mix-blend-mode: lighten) {
+        display: block;
+        position: absolute;
+        z-index: -1;
+        mix-blend-mode: lighten;
+        left: 0;
+        right: -40%;
+        top: 0;
+        bottom: 0;
+        overflow: hidden;
+
+        svg {
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: -16vw;
+          height: auto;
+          fill: $blue;
+        }
+      }
+
+      & + .banner-pattern {
+        display: none;
+        @supports (mix-blend-mode: saturation) {
+          display: block;
+          mix-blend-mode: saturation;
+          left: 0;
+          right: 0;
+
+          svg {
+            fill: $red;
           }
         }
       }
