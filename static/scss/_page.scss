@@ -1,5 +1,6 @@
 .page-template,
 [class$="-template"] {
+  overflow-x: hidden;
 
   .banner {
     padding-top: 30px;
@@ -78,17 +79,18 @@
         position: absolute;
         z-index: -1;
         mix-blend-mode: lighten;
-        left: 0;
-        right: -40%;
+        left: -20%;
+        right: -20%;
         top: 0;
         bottom: 0;
         overflow: hidden;
+        transform: scaleX(-1);
 
         svg {
           position: absolute;
           left: 0;
           right: 0;
-          bottom: -16vw;
+          bottom: 0;
           height: auto;
           fill: $blue;
         }

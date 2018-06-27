@@ -1,5 +1,4 @@
 .home-template {
-  overflow-x: hidden;
 
   .site-header {
     @media (max-height: 768px) {
@@ -22,11 +21,11 @@
       }
 
       @media (min-width: $screen-sm-min) {
-        font-size: 18px;
+        font-size: 20px;
       }
 
       @media (min-width: $screen-md-min) {
-        font-size: 20px;
+        font-size: 22px;
         padding-top: $grid-gutter-width*3;
       }
 
@@ -35,6 +34,10 @@
       }
 
       .banner-pattern {
+        left: 0;
+        right: -40%;
+        transform: scaleX(1);
+
         svg {
           bottom: -12vw;
         }
@@ -119,7 +122,6 @@
   .news {
     position: relative;
     padding-top: $grid-gutter-width*2;
-    padding-bottom: $grid-gutter-width;
 
     &:before {
       content: '';
